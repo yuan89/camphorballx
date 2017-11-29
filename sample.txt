@@ -1,0 +1,22 @@
+{
+"query":[
+	{"type":"must","func":"MatchAllQuery"},
+	{"type":"must","func":"RangeQuery","name":"myrange","json":[{"from":"1499737836959","to":"1501552811000"}]},
+	{"type":"must_not","func":"RangeQuery","name":"myrange2","json":[{"from":"1499737836959","to":"1501542811000"}]}
+],
+
+"aggs":[{
+	"func":"DateHistogramAggregation",
+    "name": "x",
+    "field": "created_timestamp",
+    "interval": "month"
+    
+    
+},
+{
+	"func":"SumAggregation",
+	"name":"y",
+    "field": "event_date.event_time"
+}]
+
+}
